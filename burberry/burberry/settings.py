@@ -79,10 +79,11 @@ HEADER = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'burberry.pipelines.BurberryNewPipeline': 1,
-}
-# activate download pipeline, must set to an available path, or the pipeline wouldn't work
+# ITEM_PIPELINES = {
+#    'burberry.pipelines.BurberryNewPipeline': 1,
+# }
+
+# the path that all images will be stored
 IMAGES_STORE = '../../data/'
 
 # Enable and configure the AutoThrottle extension (disabled by default)

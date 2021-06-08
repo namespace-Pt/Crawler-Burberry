@@ -1,6 +1,4 @@
 # useful for handling different item types with a single interface
-import logging
-from .settings import IMAGES_STORE
 # from scrapy.pipelines.images import ImagesPipeline
 
 class BurberryNewPipeline():

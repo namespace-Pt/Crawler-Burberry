@@ -10,22 +10,15 @@ class BurberrySpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [
-            # 'https://cn.burberry.com/mens-new-arrivals-new-in/'
+            # important to use this url
             "https://cn.burberry.com/service/shelf/mens-new-arrivals-new-in/"
         ]
         for url in urls:
+            # append timestamp
             url = url + '?_=' + str(round(time.time()*1000))
-            yield scrapy.Request(url=url, callback=self.parse, headers=HEADER)
 
-    def parse_product(self, response):
-        """
-            parse the product page, download the first image
-        """
-        product = BurberryNewItem()
-        product['image_urls'] = [urljoin('https:',response.xpath("//div[@class='product-carousel_item']/picture//img/@data-src").get())]
-        product['price'] = response.xpath("//span[@class='product-purchase_price']/text()").get()
-        product['name'] = response.xpath("//h1[@class='product-purchase_name']/text()").get()
-        return product
+            # set headers
+            yield scrapy.Request(url=url, callback=self.parse, headers=HEADER)
 
     def download(self, response):
         """
@@ -43,11 +36,8 @@ class BurberrySpider(scrapy.Spider):
 
     def parse(self, response):
         """
-            read the main page, get entries to every new products
+            parse the json response
         """
-        # products_url = response.xpath("//div[@class='product_container']/a/@href").getall()
-        # for product in products_url:
-        #     yield scrapy.Request(url=response.urljoin(product), callback=self.parse_product)
         products = json.loads(response.text)
         for product in products:
             item = BurberryNewItem()
