@@ -5,7 +5,10 @@ def get_header(cookie=False):
             a,b = line.split(":",1)
             header[a.strip()] = b.strip()
     if not cookie:
-        del header['cookie']
+        try:
+            del header['Cookie']
+        except:
+            print("no cookie field")
     return header
 
 if __name__ == '__main__':

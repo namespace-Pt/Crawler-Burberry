@@ -1,4 +1,4 @@
-# Scrapy settings for burberry project
+# Scrapy settings for ruc project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,17 +7,20 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'burberry'
+BOT_NAME = 'ruc'
 
-SPIDER_MODULES = ['burberry.spiders']
-NEWSPIDER_MODULE = 'burberry.spiders'
+SPIDER_MODULES = ['ruc.spiders']
+NEWSPIDER_MODULE = 'ruc.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'burberry (+http://www.yourdomain.com)'
+#USER_AGENT = 'ruc (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
+
+HEADER = {'Accept': 'application/json', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,zh-TW;q=0.5', 'Connection': 'keep-alive', 'Content-Length': '457', 'Content-type': 'application/x-www-form-urlencoded', 'Host': 'v.ruc.edu.cn', 'Origin': 'https://v.ruc.edu.cn', 'Referer': 'https://v.ruc.edu.cn/auth/login?&proxy=true&redirect_uri=https%3A%2F%2Fv.ruc.edu.cn%2Foauth2%2Fauthorize%3Fclient_id%3Daccounts.tiup.cn%26redirect_uri%3Dhttps%253A%252F%252Fv.ruc.edu.cn%252Fsso%252Fcallback%253Fschool_code%253Druc%2526theme%253Dschools%26response_type%3Dcode%26school_code%3Druc%26scope%3Dall%26state%3DPCVUnDfKal7mEHAp%26theme%3Dschools&school_code=ruc', 'sec-ch-ua': '" Not;A Brand";v="99", "Microsoft Edge";v="91", "Chromium";v="91"', 'sec-ch-ua-mobile': '?0',
+'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Site': 'same-origin', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36 Edg/91.0.864.41'}
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -25,7 +28,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 2
+#DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -44,31 +47,14 @@ DOWNLOAD_DELAY = 2
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
-HEADER = {
- 'accept': 'application/json, text/javascript, */*; q=0.01',
- 'accept-encoding': 'gzip, deflate, br',
- 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,zh-TW;q=0.5',
- 'referer': 'https://cn.burberry.com/mens-new-arrivals-new-in/',
- 'sec-ch-ua': '" Not;A Brand";v="99", "Microsoft Edge";v="91", "Chromium";v="91"',
- 'sec-ch-ua-mobile': '?0',
- 'sec-fetch-dest': 'empty',
- 'sec-fetch-mode': 'cors',
- 'sec-fetch-site': 'same-origin',
- 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36 Edg/91.0.864.41',
- 'x-csrf-token': 'kc6dWHW1-GaF70XtHCnOKEKZQrkqc2BmYgZA',
- 'x-newrelic-id': 'VwIOVFFUGwIJVldQBAQA',
- 'x-requested-with': 'XMLHttpRequest'
-}
-
-# SPIDER_MIDDLEWARES = {
-#    'burberry.middlewares.BurberryNewSpiderMiddleware': 543,
-# }
+#SPIDER_MIDDLEWARES = {
+#    'ruc.middlewares.RucSpiderMiddleware': 543,
+#}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'burberry.middlewares.BurberryNewDownloaderMiddleware': 543,
+#    'ruc.middlewares.RucDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -79,12 +65,9 @@ HEADER = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'burberry.pipelines.BurberryNewPipeline': 1,
-# }
-
-# the path that all images will be stored
-IMAGES_STORE = '../../data/burberry/'
+#ITEM_PIPELINES = {
+#    'ruc.pipelines.RucPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
