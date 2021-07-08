@@ -84,7 +84,7 @@ HEADER = {
 # }
 
 # the path that all images will be stored
-IMAGES_STORE = '../../data/burberry/'
+IMAGES_STORE = '../../data/'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
